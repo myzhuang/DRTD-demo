@@ -1,0 +1,3 @@
+YOLO1x can be download in link:
+https://docs.ultralytics.com/tasks/detect/
+Choose the pretrained weights of YOLO11x for download.

@@ -1,0 +1,10 @@
+path: /home2/zmy/projects/20240821_evcar/dataset/aligned
+train: images/train  # path to RGB/event train images
+val: images/val      # path to RGB/event val images
+test: images/test    # path to RGB/event test images
+
+names:
+  0: Car
+  1: Motorcycle
+  2: Bus
+  3: Truck
