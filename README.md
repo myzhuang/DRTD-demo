@@ -1,6 +1,6 @@
 # Dual-modal Roadside Traffic Dataset (DRTD) for Object Detection Task Code Repository (v2.0.0)
 
-This repository corresponds to the manuscript under review at Scientific Data, "A Spatially Aligned RGB-Event Modality Dataset for Roadside Traffic Object Detection". It provides dataset-related processing and experimental demo code intended for illustration, visualization, and reproducibility, rather than a full production-level training framework. Each demo directory includes a detailed `README.md`; please follow the instructions there.
+This repository corresponds to Scientific Data, "A Spatially Aligned RGB-Event Modality Dataset for Roadside Traffic Object Detection". It provides dataset-related processing and experimental demo code intended for illustration, visualization, and reproducibility, rather than a full production-level training framework. Each demo directory includes a detailed `README.md`; please follow the instructions there.
 Demo 1, 2, 3, 4, and 6 are minimal, self-contained programs. Their inputs come from the `input_data` folder inside each demo, and outputs are written to the `output_data` folder. They do not require downloading the DRTD.
 Demo 5 contains training and inference code, which requires downloading DRTD and configuring the path to the dataset.
 
@@ -13,7 +13,7 @@ This repository corresponds to version v1.0.0, which is used for generating the 
 - `demo2_ev_process`: Event modality calibration and rectification. Input: HDF5 files under `input_data`; output: rectified event images to `output_data`.
 - `demo3_rgb_event_modality_fusion_with_annotation`: RGB–Event fusion with annotation visualization. Input: RGB and event images under `input_data`; output: fusion images with annotation visualization to `output_data`.
 - `demo4_annotation_generation_with_vslm`: Annotation generation based on visual segmentation large model (VSLM). yolov11 model is use to be a visual prompter and SAM2 is use to be a VSLM. Download `yolo11x.pt` to `yolo11_pretrained_model`, and `sam2.1_b.pt` to `SAM2_pretrained_model`, then run `python generate_annotation.py`. Outputs files (prompt points, segmentation, annotation visualization, DRTD annotation txt file) are saved to `output_data`.
-- `demo5_train_model_on_DRTD`: Training, evaluation, and inference for YOLO26 / ICAFusion / RVT on DRTD. Includes logic to temporarily rename the selected modality to `images`; training outputs and evaluation results are saved under `output_data\<name>\`.
+- `demo5_train_model_on_DRTD`: Training, evaluation, and inference for YOLO26 / ICAFusion / RVT on DRTD. Includes logic to temporarily rename the selected modality to `images`.
 - `demo6_effective_area_DRTD_and_TUMTraf`: Compute and visualize the effective area of DRTD and TUMTraf (valid pixel region). Scripts use the example inputs already in `input_data`; visualizations and pixel counts are written to `output_data`.
 
 ## Run Environment
