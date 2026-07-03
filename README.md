@@ -1,4 +1,4 @@
-# Dual-modal Roadside Traffic Dataset (DRTD) for Object Detection Task Code Repository (v1.0.0)
+# Dual-modal Roadside Traffic Dataset (DRTD) for Object Detection Task Code Repository (v2.0.0)
 
 This repository corresponds to the manuscript under review at Scientific Data, "A Spatially Aligned RGB-Event Modality Dataset for Roadside Traffic Object Detection". It provides dataset-related processing and experimental demo code intended for illustration, visualization, and reproducibility, rather than a full production-level training framework. Each demo directory includes a detailed `README.md`; please follow the instructions there.
 Demo 1, 2, 3, 4, and 6 are minimal, self-contained programs. Their inputs come from the `input_data` folder inside each demo, and outputs are written to the `output_data` folder. They do not require downloading the DRTD.
@@ -13,7 +13,7 @@ This repository corresponds to version v1.0.0, which is used for generating the 
 - `demo2_ev_process`: Event modality calibration and rectification. Input: HDF5 files under `input_data`; output: rectified event images to `output_data`.
 - `demo3_rgb_event_modality_fusion_with_annotation`: RGB–Event fusion with annotation visualization. Input: RGB and event images under `input_data`; output: fusion images with annotation visualization to `output_data`.
 - `demo4_annotation_generation_with_vslm`: Annotation generation based on visual segmentation large model (VSLM). yolov11 model is use to be a visual prompter and SAM2 is use to be a VSLM. Download `yolo11x.pt` to `yolo11_pretrained_model`, and `sam2.1_b.pt` to `SAM2_pretrained_model`, then run `python generate_annotation.py`. Outputs files (prompt points, segmentation, annotation visualization, DRTD annotation txt file) are saved to `output_data`.
-- `demo5_train_yolo_model_on_DRTD`: Training, evaluation, and inference for YOLOv9 / YOLOv10 / YOLOv11 on DRTD. Includes logic to temporarily rename the selected modality to `images`; training outputs and evaluation results are saved under `output_data\<name>\`.
+- `demo5_train_model_on_DRTD`: Training, evaluation, and inference for YOLO26 / ICAFusion / RVT on DRTD. Includes logic to temporarily rename the selected modality to `images`; training outputs and evaluation results are saved under `output_data\<name>\`.
 - `demo6_effective_area_DRTD_and_TUMTraf`: Compute and visualize the effective area of DRTD and TUMTraf (valid pixel region). Scripts use the example inputs already in `input_data`; visualizations and pixel counts are written to `output_data`.
 
 ## Run Environment
@@ -32,7 +32,7 @@ This repository corresponds to version v1.0.0, which is used for generating the 
 - Demo4 (Annotation generation with visual segmentation large model (VSLM))
   - Dependencies: `os`, `cv2`, `numpy`, `torch`, `pathlib`, `ultralytics` (version 8.3.189)
 - Demo5 (YOLO training/evaluation/inference)
-  - Dependencies: `torch 2.1.0 + CUDA 12.1` (NVIDIA GPU recommended), `ultralytics` (version 8.3.189)
+  - Dependencies: `torch 2.1.0 + CUDA 12.1` (NVIDIA GPU recommended), `ultralytics` (version 8.4.86)
   - Training must be run on Linux. The scripts temporarily rename `RGB` or `event` to `images` at the dataset root and restore after training.
 - Demo6 (effective area computation & visualization)
   - Dependencies: `numpy`, `matplotlib`, `h5py`, `cv2`
@@ -54,15 +54,11 @@ Install the dependencies and run according to each demo's `README.md`.
   - `cd demo4_annotation_generation_with_vslm`
   - `python generate_annotation.py`
 - Demo5 (YOLO training/evaluation/inference)
-  - `cd demo5_train_yolo_model_on_DRTD`
-  - Set `path` in `DRTD_cfg.yaml` to the DRTD root
-  - Set `DRTD_root_path` in each training script, then run:
-    - `python train_yolov9_DRTD_event.py`
-    - `python train_yolov9_DRTD_rgb.py`
-    - `python train_yolov10_DRTD_event.py`
-    - `python train_yolov10_DRTD_rgb.py`
-    - `python train_yolov11_DRTD_event.py`
-    - `python train_yolov11_DRTD_rgb.py`
+  - `cd demo5_train_model_on_DRTD`
+  - `python train_yolo26_drtd_rgb.py`
+  - `python train_yolo26_drtd_event.py`
+  - `python train_icafusion_drtd.py`
+  - `python train_rvt_drtd.py`
   - See the directory `README.md` for inference scripts
 - Demo6 (Effective area visualization)
   - `cd demo6_effective_area_DRTD_and_TUMTraf`

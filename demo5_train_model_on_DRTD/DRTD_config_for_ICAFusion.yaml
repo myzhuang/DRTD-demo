@@ -1,0 +1,17 @@
+# config for DRTD
+path: /home2/zmy/projects/20240821_evcar/20260618_icafusion/DRTD_icafusion/
+train_rgb: /home2/zmy/projects/20240821_evcar/20260618_icafusion/DRTD_icafusion/rgb/train 
+val_rgb: /home2/zmy/projects/20240821_evcar/20260618_icafusion/DRTD_icafusion/rgb/test  
+train_ir: /home2/zmy/projects/20240821_evcar/20260618_icafusion/DRTD_icafusion/event/train 
+val_ir: /home2/zmy/projects/20240821_evcar/20260618_icafusion/DRTD_icafusion/event/test 
+
+# number of classes
+nc: 4
+
+# class names
+names: ['Car', 'Motorcycle', 'Bus', 'Truck']
+
+
+
+
+
